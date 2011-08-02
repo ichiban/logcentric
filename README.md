@@ -17,18 +17,14 @@ ZMQAppender can be configured in log4j.xml.
 
 example)
 
-<pre>
 	<appender name="logcentric" class="com.y1ban.logcentric.publisher.ZMQAppender">
 		<param name="threads" value="1" />
 		<param name="endpoint" value="tcp://*:5556" />
 		<param name="blocking" value="true" />
 	</appender>
-</pre>
 
 # LogCollector
 
 LogCentric jar is an executable jar to run LogCollector.
 
-<pre>
-java -Dlogcentric.threads=1 -Dlogcentric.endpoint=tcp://localhost:5556 -Dlogcentric.blocking=true -jar logcentric-<VERSION>.jar
-</pre>
+	java -Dlogcentric.threads=1 -Dlogcentric.endpoint=tcp://localhost:5556 -Dlogcentric.blocking=true -jar logcentric-<VERSION>.jar
