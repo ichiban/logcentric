@@ -8,6 +8,7 @@ import org.zeromq.ZMQ.Context;
 import org.zeromq.ZMQ.Socket;
 
 import com.google.gson.Gson;
+import com.google.inject.Inject;
 import com.y1ban.logcentric.data.LoggingEventData;
 
 public class ZMQAppender extends AppenderSkeleton implements Appender {
@@ -23,6 +24,7 @@ public class ZMQAppender extends AppenderSkeleton implements Appender {
 		super();
 	}
 
+	@Inject
 	public ZMQAppender(final Socket socket) {
 		this();
 		this.socket = socket;
