@@ -26,7 +26,6 @@ import org.zeromq.ZMQ.Socket;
 
 import com.google.gson.Gson;
 import com.y1ban.logcentric.data.LoggingEventData;
-import com.y1ban.logcentric.publisher.ZMQAppender;
 
 public class ZMQAppenderTest {
 	Gson gson = new Gson();

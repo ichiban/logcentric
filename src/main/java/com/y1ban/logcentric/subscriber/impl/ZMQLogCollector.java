@@ -33,11 +33,12 @@ public class ZMQLogCollector implements LogCollector {
 			collectOne();
 		}
 	}
-	
+
 	protected void collectOne() {
-		final byte[] input =socket.recv(blocking ? 0 : ZMQ.NOBLOCK); 
+		final byte[] input = socket.recv(blocking ? 0 : ZMQ.NOBLOCK);
 		final String json = new String(input);
-		final LoggingEventData data = gson.fromJson(json, LoggingEventData.class);
+		final LoggingEventData data = gson.fromJson(json,
+				LoggingEventData.class);
 		final LoggingEvent event = data.toLoggingEvent();
 		logger.callAppenders(event);
 	}

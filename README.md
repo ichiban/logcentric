@@ -15,11 +15,9 @@ LogCollector catches the logging events and generates a centralized log in a man
 
 ZMQAppender can be configured in log4j.xml.
 
-example)
-
 	<appender name="logcentric" class="com.y1ban.logcentric.publisher.ZMQAppender">
 		<param name="threads" value="1" />
-		<param name="endpoint" value="tcp://*:5556" />
+		<param name="endpoint" value="tcp://*:5555" />
 		<param name="blocking" value="true" />
 	</appender>
 
@@ -27,4 +25,4 @@ example)
 
 LogCentric jar is an executable jar to run LogCollector.
 
-	java -Dlogcentric.threads=1 -Dlogcentric.endpoint=tcp://localhost:5556 -Dlogcentric.blocking=true -jar logcentric-<VERSION>.jar
+	java -Dlogcentric.threads=1 -Dlogcentric.endpoint=tcp://localhost:5555 -Dlogcentric.blocking=true -jar logcentric-<VERSION>.jar

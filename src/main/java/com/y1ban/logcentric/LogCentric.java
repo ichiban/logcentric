@@ -31,7 +31,7 @@ public class LogCentric extends AbstractModule {
 	@Override
 	protected void configure() {
 		Names.bindProperties(binder(), System.getProperties());
-		
+
 		bind(LogCollector.class).to(ZMQLogCollector.class);
 	}
 

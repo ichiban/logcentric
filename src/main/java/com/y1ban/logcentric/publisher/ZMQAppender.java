@@ -8,7 +8,6 @@ import org.zeromq.ZMQ.Context;
 import org.zeromq.ZMQ.Socket;
 
 import com.google.gson.Gson;
-import com.google.inject.Inject;
 import com.y1ban.logcentric.data.LoggingEventData;
 
 public class ZMQAppender extends AppenderSkeleton implements Appender {
@@ -24,7 +23,6 @@ public class ZMQAppender extends AppenderSkeleton implements Appender {
 		super();
 	}
 
-	@Inject
 	public ZMQAppender(final Socket socket) {
 		this();
 		this.socket = socket;
@@ -46,21 +44,15 @@ public class ZMQAppender extends AppenderSkeleton implements Appender {
 
 	@Override
 	protected void append(final LoggingEvent event) {
-		if (isNotReady()) {
-			init();
-		}
-
 		final LoggingEventData data = new LoggingEventData(event);
 		final String json = gson.toJson(data);
-		System.out.println(json);
 		socket.send(json.getBytes(), blocking ? 0 : ZMQ.NOBLOCK);
 	}
 
-	private boolean isNotReady() {
-		return null == socket;
-	}
+	@Override
+	public void activateOptions() {
+		super.activateOptions();
 
-	private void init() {
 		final Context context = ZMQ.context(threads);
 		final Socket socket = context.socket(ZMQ.PUB);
 		socket.bind(endpoint);
